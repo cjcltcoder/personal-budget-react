@@ -12,6 +12,7 @@ import HomePage from './HomePage/HomePage';
 import Footer from './Footer/Footer';
 import AboutPage from './AboutPage/AboutPage';
 import LoginPage from './LoginPage/LoginPage';
+import PieChart from './PieChart/PieChart';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/about" element={<AboutPage />}/>
           <Route path="/login" element={<LoginPage />}/>
           <Route path="/" element={<HomePage />}/>
+          <Route path="/chart" element={<PieChart />}/>
         </Routes>
       </div>
       
