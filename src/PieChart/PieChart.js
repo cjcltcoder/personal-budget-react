@@ -1,29 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import axios from 'axios';
-import Chart from 'chart.js/auto'; // Import Chart.js library
+import Chart from 'chart.js/auto';
 
 function PieChart() {
-  const [budgetData, setBudgetData] = useState([]);
+  const chartRef = useRef(null);
 
   useEffect(() => {
-    getBudget();
-  }, []);
+    const getBudget = () => {
+      axios.get('http://localhost:4000/budget')
+        .then(res => {
+          createChart(res.data.myBudget);
+        })
+        .catch(error => {
+          console.error('Error fetching budget:', error);
+        });
+    };
 
-  const getBudget = () => {
-    axios.get('http://localhost:4000/budget')
-      .then(res => {
-        setBudgetData(res.data.myBudget);
-        createChart(res.data.myBudget);
-      })
-      .catch(error => {
-        console.error('Error fetching budget:', error);
-      });
-  };
+    getBudget(); // Call getBudget inside useEffect
+  }, []); // Empty dependency array since getBudget doesn't depend on any props or state
 
   const createChart = (data) => {
+    if (chartRef.current) {
+      chartRef.current.destroy();
+    }
+
     const ctx = document.getElementById('myChart').getContext('2d');
 
-    new Chart(ctx, {
+    const newChart = new Chart(ctx, {
       type: 'pie',
       data: {
         labels: data.map(item => item.title),
@@ -33,6 +36,8 @@ function PieChart() {
         }]
       }
     });
+
+    chartRef.current = newChart;
   };
 
   return (

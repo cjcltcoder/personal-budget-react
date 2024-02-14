@@ -80,7 +80,7 @@ function D3Chart() {
       .attr('points', d => {
         const posArc = arc.centroid(d);
         const posOuterArc = outerArc.centroid(d);
-        // Adjust the length of the line by reducing the distance between the two points
+        // Adjust the length of the line
         const shortenedPos = [
           posArc[0] * 0.68 + posOuterArc[0] * 0.5,
           posArc[1] * 0.68 + posOuterArc[1] * 0.5
