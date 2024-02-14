@@ -1,3 +1,4 @@
+import D3Chart from "../D3Chart/D3Chart";
 import PieChart from "../PieChart/PieChart";
 
 function HomePage() {
@@ -67,6 +68,12 @@ function HomePage() {
         <h1>Chart</h1>
         <p>
             <PieChart />
+        </p>
+    </article>
+    <article>
+        <h1 className="d3title">3D Chart</h1>
+        <p>
+            <D3Chart />
         </p>
     </article>
 

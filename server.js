@@ -21,11 +21,19 @@ const budget = {
             title: 'Grocery',
             budget: 110
         },
+        {
+            title: 'Car',
+            budget: 600
+        }
     ]
 };
 
 
 app.get('/budget', (req, res) => {
+    res.json(budget);
+});
+
+app.get('/chart', (req, res) => {
     res.json(budget);
 });
 

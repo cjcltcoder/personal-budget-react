@@ -13,6 +13,7 @@ import Footer from './Footer/Footer';
 import AboutPage from './AboutPage/AboutPage';
 import LoginPage from './LoginPage/LoginPage';
 import PieChart from './PieChart/PieChart';
+import D3Chart from './D3Chart/D3Chart';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<LoginPage />}/>
           <Route path="/" element={<HomePage />}/>
           <Route path="/chart" element={<PieChart />}/>
+          <Route path="/d3chart" element={<D3Chart />}/>
         </Routes>
       </div>
       
